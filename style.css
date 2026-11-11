@@ -1,0 +1,219 @@
+/* Dalhousie Graduate Physics Society
+   One stylesheet for every page. Colours are set once here, in :root. */
+
+:root {
+    --gold: #f2b705;          /* Dalhousie-ish gold */
+    --gold-dark: #b98a00;
+    --ink: #1a1a1a;
+    --muted: #5b5b5b;
+    --bg: #ffffff;
+    --bg-alt: #f6f4ee;
+    --line: #e2ded2;
+    --max: 960px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ink: #ece9e1;
+        --muted: #a8a49a;
+        --bg: #141414;
+        --bg-alt: #1d1c19;
+        --line: #33312b;
+        --gold-dark: #f2b705;
+    }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    background: var(--bg);
+}
+
+a { color: var(--gold-dark); }
+a:hover { text-decoration-thickness: 2px; }
+
+.wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+    background: #111;
+    color: #fff;
+    border-bottom: 4px solid var(--gold);
+}
+
+.site-header .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.brand {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: 0.01em;
+}
+.brand span { color: var(--gold); }
+
+.site-nav { display: flex; gap: 22px; }
+.site-nav a {
+    color: #ddd;
+    text-decoration: none;
+    font-weight: 500;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
+.site-nav a:hover { color: #fff; }
+.site-nav a[aria-current="page"] { color: #fff; border-bottom-color: var(--gold); }
+
+/* ---------- Hero ---------- */
+
+.hero {
+    background: #111;
+    color: #fff;
+    padding: 72px 0 80px;
+}
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.15;
+    margin: 0 0 16px;
+}
+.hero p {
+    font-size: 1.15rem;
+    color: #cfcfcf;
+    max-width: 38em;
+    margin: 0 0 28px;
+}
+
+.button {
+    display: inline-block;
+    background: var(--gold);
+    color: #111;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+.button:hover { background: #ffc81f; }
+.button.ghost {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #555;
+    margin-left: 8px;
+}
+.button.ghost:hover { border-color: var(--gold); }
+
+/* ---------- Sections ---------- */
+
+section { padding: 56px 0; }
+section.alt { background: var(--bg-alt); }
+
+h2 {
+    font-size: 1.7rem;
+    margin: 0 0 20px;
+}
+h2::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    background: var(--gold);
+    margin-top: 8px;
+}
+
+.page-title { padding: 48px 0 8px; }
+.page-title h1 { font-size: 2.2rem; margin: 0 0 8px; }
+.page-title p { color: var(--muted); margin: 0; }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px;
+}
+.card h3 { margin: 0 0 8px; font-size: 1.1rem; }
+.card p { margin: 0; color: var(--muted); }
+
+/* ---------- Events ---------- */
+
+.event-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 16px; }
+
+.event {
+    display: grid;
+    grid-template-columns: 84px 1fr;
+    gap: 18px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 18px;
+}
+
+.event .date {
+    text-align: center;
+    border-right: 1px solid var(--line);
+    padding-right: 14px;
+}
+.event .date .month {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gold-dark);
+    letter-spacing: 0.06em;
+}
+.event .date .day { display: block; font-size: 1.9rem; font-weight: 700; line-height: 1.1; }
+
+.event h3 { margin: 0 0 4px; font-size: 1.15rem; }
+.event .meta { color: var(--muted); font-size: 0.92rem; margin: 0 0 8px; }
+.event p:last-child { margin-bottom: 0; }
+
+.past .event { opacity: 0.7; }
+
+.empty { color: var(--muted); font-style: italic; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 28px 0;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+.site-footer .wrap {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 560px) {
+    .hero { padding: 48px 0 56px; }
+    .button.ghost { margin-left: 0; margin-top: 10px; }
+    .event { grid-template-columns: 64px 1fr; gap: 12px; padding: 14px; }
+    .event .date .day { font-size: 1.5rem; }
+}

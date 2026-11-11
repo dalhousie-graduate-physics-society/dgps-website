@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Events · Dalhousie Graduate Physics Society</title>
+    <meta name="description" content="Upcoming and past events of the Dalhousie Graduate Physics Society.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <div class="wrap">
+        <a class="brand" href="index.html">Dal <span>Graduate Physics</span> Society</a>
+        <nav class="site-nav">
+            <a href="index.html">Home</a>
+            <a href="events.html" aria-current="page">Events</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="page-title">
+        <div class="wrap">
+            <h1>Events</h1>
+            <p>Everyone in physics is welcome. Bring a friend.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="wrap">
+            <h2>Upcoming</h2>
+            <!--
+                HOW TO ADD AN EVENT
+                Copy one <li class="event"> block below and change it.
+                - data-date is the event's date as YYYY-MM-DD. Once that day has
+                  passed, the event moves to "Past events" by itself, so you
+                  never need to move it by hand.
+                - The order doesn't matter: events are sorted by date.
+                The events below are examples: replace them with real ones.
+            -->
+            <ul class="event-list" id="upcoming">
+                <li class="event" data-date="2026-11-20">
+                    <div class="date"><span class="month">Nov</span><span class="day">20</span></div>
+                    <div>
+                        <h3>Example: Pub night</h3>
+                        <p class="meta">Thursday · 6:00 pm · Location TBA</p>
+                        <p>Unwind with the rest of the department. First round's on the society.</p>
+                    </div>
+                </li>
+                <li class="event" data-date="2026-12-05">
+                    <div class="date"><span class="month">Dec</span><span class="day">5</span></div>
+                    <div>
+                        <h3>Example: Holiday social</h3>
+                        <p class="meta">Saturday · 7:00 pm · Location TBA</p>
+                        <p>Food, games and a gift exchange before the break.</p>
+                    </div>
+                </li>
+                <li class="event" data-date="2026-10-15">
+                    <div class="date"><span class="month">Oct</span><span class="day">15</span></div>
+                    <div>
+                        <h3>Example: Grad research talks</h3>
+                        <p class="meta">Wednesday · 4:00 pm · Dunn Building</p>
+                        <p>Short, informal talks from grad students about their research.</p>
+                    </div>
+                </li>
+            </ul>
+            <p class="empty" id="no-upcoming" hidden>Nothing scheduled right now. Check back soon!</p>
+        </div>
+    </section>
+
+    <section class="alt past" id="past-section" hidden>
+        <div class="wrap">
+            <h2>Past events</h2>
+            <ul class="event-list" id="past"></ul>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="wrap">
+        <span>Dalhousie Graduate Physics Society</span>
+        <span>Halifax, Nova Scotia</span>
+    </div>
+</footer>
+
+<script>
+    // Sorts events by date and moves ones whose day has passed into "Past events".
+    // Without JavaScript, every event simply shows under "Upcoming".
+    (function () {
+        var upcoming = document.getElementById("upcoming");
+        var past = document.getElementById("past");
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        var events = Array.prototype.slice.call(upcoming.querySelectorAll(".event"));
+        function day(el) { return new Date(el.dataset.date + "T00:00:00"); }
+        events.sort(function (a, b) { return day(a) - day(b); });
+
+        events.forEach(function (el) {
+            if (day(el) < today) past.insertBefore(el, past.firstChild);  // newest past event first
+            else upcoming.appendChild(el);
+        });
+
+        document.getElementById("no-upcoming").hidden = upcoming.children.length > 0;
+        document.getElementById("past-section").hidden = past.children.length === 0;
+    })();
+</script>
+
+</body>
+</html>
