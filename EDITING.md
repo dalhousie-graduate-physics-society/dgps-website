@@ -46,7 +46,7 @@ For small changes like adding an event or fixing a typo, you never need to leave
 3. Click the pencil icon (✏️ "Edit this file") at the top right of the file.
 4. Make your change.
 5. Click **Commit changes…**, write a short note about what you changed
-   (for example "Add March pub night"), and click **Commit changes** again.
+   (for example "Add March trivia night"), and click **Commit changes** again.
 
 That's it. The site updates within a minute or two. You can watch it go live
 in the **Actions** tab: a green check means it's published.
@@ -60,9 +60,9 @@ Each event is one block like this:
 <li class="event" data-date="2026-11-20">
     <div class="date"><span class="month">Nov</span><span class="day">20</span></div>
     <div>
-        <h3>Pub night</h3>
-        <p class="meta">Thursday · 6:00 pm · The Grawood</p>
-        <p>Unwind with the rest of the department.</p>
+        <h3>Trivia night</h3>
+        <p class="meta">Thursday · 6:00 pm · Dunn Building</p>
+        <p>Grab a team and test your knowledge.</p>
     </div>
 </li>
 ```
