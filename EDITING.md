@@ -13,6 +13,7 @@ branch goes live automatically within a minute or two.
 - [Getting access](#getting-access)
 - [The easy way: edit on GitHub](#the-easy-way-edit-on-github)
 - [Adding an event](#adding-an-event)
+- [Editing the executive list](#editing-the-executive-list)
 - [Changing other text](#changing-other-text)
 - [Editing on your own computer](#editing-on-your-own-computer)
 - [Checking the site after a change](#checking-the-site-after-a-change)
@@ -25,6 +26,8 @@ branch goes live automatically within a minute or two.
 |---------------|----------------------------------------------------------------|
 | `index.html`  | The home page: intro, About us, What we do, Contact            |
 | `events.html` | The Events page                                                |
+| `team.html`   | The Executive page (names, pronouns, bios, photos)             |
+| `images/exec/`| Profile pictures for the Executive page                        |
 | `style.css`   | How everything looks: colours, fonts, spacing                  |
 
 There's no build step and nothing to install. The files on GitHub are exactly
@@ -87,8 +90,21 @@ You don't need to worry about order or old events:
 
 To remove an event entirely, delete its whole block from `<li` to `</li>`.
 
+**Date not decided yet?** Leave out `data-date` entirely and put `TBD` in
+`<span class="day">` (and `Dec` or similar in the month). The event stays under
+Upcoming, after the dated ones. When the date is set, add `data-date="YYYY-MM-DD"`
+and fill in the month and day.
+
 **Check `data-date` carefully.** It's what decides where the event shows up.
 It must be in the form `YYYY-MM-DD`, with leading zeros: `2027-03-05`, not `2027-3-5`.
+
+## Editing the executive list
+
+Open `team.html`. Each person is one `<li class="member">` block. Copy a block
+to add someone, delete one to remove someone, and change the name, pronouns,
+role and bio. For a photo, save a square image (for example `jane.jpg`) in
+`images/exec/` (on GitHub: **Add file → Upload files**) and change the
+`src="images/exec/placeholder.svg"` line to `src="images/exec/jane.jpg"`.
 
 ## Changing other text
 
@@ -96,7 +112,7 @@ All the words on the home page are in `index.html`. Find the sentence you want
 to change and edit it, leaving the `<tags>` around it alone. For example, in
 
 ```html
-<p>Email us at <a href="mailto:dgps@example.com">dgps@example.com</a></p>
+<p>Email us at <a href="mailto:dgps@dal.ca">dgps@dal.ca</a></p>
 ```
 
 the email address appears twice: once after `mailto:` (where the link goes)
@@ -110,8 +126,8 @@ A few things to know about HTML:
 - To write a literal `&`, type `&amp;`.
 - Lines starting with `<!--` and ending with `-->` are notes for editors. Visitors never see them.
 
-The header (the black bar with the menu) and the footer are copied into both
-`index.html` and `events.html`. If you change one, change the other to match.
+The header (the black bar with the menu) and the footer are copied into every
+page (`index.html`, `events.html` and `team.html`). If you change one, change the other to match.
 
 ## Editing on your own computer
 

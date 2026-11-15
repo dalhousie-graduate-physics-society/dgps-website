@@ -194,6 +194,43 @@ h2::after {
 
 .empty { color: var(--muted); font-style: italic; }
 
+/* ---------- Executive ---------- */
+
+.member-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+.member {
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 22px;
+    text-align: center;
+}
+.member img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold);
+    margin-bottom: 12px;
+}
+.member h3 { margin: 0; font-size: 1.15rem; }
+.member .pronouns { color: var(--muted); font-size: 0.9rem; margin: 0 0 4px; }
+.member .role {
+    color: var(--gold-dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 10px;
+}
+.member p:last-child { margin: 0; color: var(--muted); font-size: 0.95rem; text-align: left; }
+
 /* ---------- Footer ---------- */
 
 .site-footer {

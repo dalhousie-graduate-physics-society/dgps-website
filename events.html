@@ -15,6 +15,7 @@
         <nav class="site-nav">
             <a href="index.html">Home</a>
             <a href="events.html" aria-current="page">Events</a>
+            <a href="team.html">Executive</a>
             <a href="index.html#contact">Contact</a>
         </nav>
     </div>
@@ -38,31 +39,15 @@
                   passed, the event moves to "Past events" by itself, so you
                   never need to move it by hand.
                 - The order doesn't matter: events are sorted by date.
-                The events below are examples: replace them with real ones.
+                An event with no data-date (date still TBD) stays under Upcoming.
             -->
             <ul class="event-list" id="upcoming">
-                <li class="event" data-date="2026-11-20">
-                    <div class="date"><span class="month">Nov</span><span class="day">20</span></div>
+                <li class="event">
+                    <div class="date"><span class="month">Dec</span><span class="day">TBD</span></div>
                     <div>
-                        <h3>Example: Trivia night</h3>
-                        <p class="meta">Thursday · 6:00 pm · Location TBA</p>
-                        <p>Grab a team and test your knowledge. Prizes for the winners!</p>
-                    </div>
-                </li>
-                <li class="event" data-date="2026-12-05">
-                    <div class="date"><span class="month">Dec</span><span class="day">5</span></div>
-                    <div>
-                        <h3>Example: Holiday social</h3>
-                        <p class="meta">Saturday · 7:00 pm · Location TBA</p>
-                        <p>Food, games and a gift exchange before the break.</p>
-                    </div>
-                </li>
-                <li class="event" data-date="2026-10-15">
-                    <div class="date"><span class="month">Oct</span><span class="day">15</span></div>
-                    <div>
-                        <h3>Example: Grad research talks</h3>
-                        <p class="meta">Wednesday · 4:00 pm · Dunn Building</p>
-                        <p>Short, informal talks from grad students about their research.</p>
+                        <h3>Games night</h3>
+                        <p class="meta">December · Date and location TBD</p>
+                        <p>Board games, card games and snacks. Date to be announced.</p>
                     </div>
                 </li>
             </ul>
@@ -95,7 +80,8 @@
         today.setHours(0, 0, 0, 0);
 
         var events = Array.prototype.slice.call(upcoming.querySelectorAll(".event"));
-        function day(el) { return new Date(el.dataset.date + "T00:00:00"); }
+        // Events with no data-date (date TBD) sort last and never count as past.
+        function day(el) { return el.dataset.date ? new Date(el.dataset.date + "T00:00:00") : new Date(8.64e15); }
         events.sort(function (a, b) { return day(a) - day(b); });
 
         events.forEach(function (el) {
